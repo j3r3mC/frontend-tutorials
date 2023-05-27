@@ -1,7 +1,6 @@
 import React, { Component }  from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
-import image from '../asset/zoom.png'
 
 export default class TutorialsList extends Component {
     constructor(props) {
@@ -101,18 +100,18 @@ export default class TutorialsList extends Component {
                             />
                             <div className="input-group-append">
                                 <button
-                                    className="btn btn-outline-secondary"
+                                    className="m-3 btn btn-sm btn-primary"
                                     type="button"
                                     onClick={this.searchTitle}
                                 >
-                                    Search <img src={image} alt="loupe" width={"20px"} height={"20px"}/>
+                                    Search 
 
                                 </button>                                
                             </div>
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <h4>TutorialsList</h4>
+                    <h4 className="titleList">Tutorials list</h4>
 
                     <ul className="list-group">
                         {tutorials &&
@@ -136,27 +135,21 @@ export default class TutorialsList extends Component {
                         Remove all
                     </button>
                 </div>
-                <div className="col-md-6">
+                <div className="col-sm-6">
                     {currentTutorial ? (
                         <div>
-                            <h4>Tutorial</h4>
+                            <h4 className="titleList">Tutorial</h4>
+                            <div className="card">
+                                <div className="card-body">
+                                    <h3 className="card-title">
+                                         {currentTutorial.title}
+                                    </h3>                            
                             <div>
-                                <label>
-                                    <strong>Title:</strong>
-                                </label>{""}
-                                {currentTutorial.title}
+                                <p className="card-text">description:</p>
+                                <p className="card-text">{currentTutorial.description} </p>
                             </div>
                             <div>
-                                <label>
-                                    <strong>Description:</strong>
-                                </label>{""}
-                                    {currentTutorial.description}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Status:</strong>
-                                </label>{""}
-                                    {currentTutorial.published ? "Published" : "Pending"}
+                                <p className="card-text">status: {currentTutorial.published ? "Published" : "Pending"} </p>                                  
                             </div>
                             <Link to={"/tutorials/" 
                                 + currentTutorial.id}
@@ -164,6 +157,8 @@ export default class TutorialsList extends Component {
                                 >
                                     Edit
                                 </Link>
+                                </div>
+                            </div>
                         </div>
                     ) : (
                         <div>

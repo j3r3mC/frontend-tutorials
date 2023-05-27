@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "josephinSans-Medium";
+  src: url("./asset/fonts/JosefinSans-Medium.ttf");
+}
+
+body{
+  color: white;
+  background-image: url('./asset/background2.jpg');
+  }
+
+.titleList{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+}
+
 .list {
   text-align: left;
   max-width: 750px;
@@ -13,3 +29,15 @@
   max-width: 300px;
   margin: auto;
 }
+.card{
+  text-align: center;
+  padding: auto;
+  background-color: #1a2a3a;
+  color: white;
+}
+.card-text{
+  text-align: left;
+  padding: 1px;
+  margin: 1px;
+}
+

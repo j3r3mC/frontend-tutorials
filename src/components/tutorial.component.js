@@ -94,9 +94,7 @@ class Tutorial extends Component {
       )
         .then(response => {
           console.log(response.data);
-          this.setState({
-            message: "The tutorial was updated successfully!"
-          });
+          this.props.router.navigation('/tutorials');
         })
         .catch(e => {
           console.log(e);
@@ -107,7 +105,7 @@ class Tutorial extends Component {
       TutorialDataService.delete(this.state.currentTutorial.id)
         .then(response => {
           console.log(response.data);
-          this.props.router.navigation('/tutorials')
+          this.props.router.navigation('/tutorials');
         })
         .catch(e => {
           console.log(e);
