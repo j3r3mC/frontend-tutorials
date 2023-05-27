@@ -6,7 +6,9 @@
 body{
   color: white;
   background-image: url('./asset/background2.jpg');
-  }
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .titleList{
   margin-top: 1.5rem;
@@ -18,26 +20,45 @@ body{
   text-align: left;
   max-width: 750px;
   margin: auto;
+  
 }
 
 .submit-form {
   max-width: 300px;
   margin: auto;
+  background-color: #1a2a3a;
+  opacity: 0.80;
+  padding: 2rem;
+  border-radius: 15px;
+  
+  
 }
 
 .edit-form {
-  max-width: 300px;
+  max-width: 400px;
   margin: auto;
+  background-color: #1a2a3a;
+  opacity: 0.80;
+  padding: 2rem;
+  border-radius: 15px;
+
 }
 .card{
   text-align: center;
   padding: auto;
   background-color: #1a2a3a;
+  opacity: 0.80;
   color: white;
 }
+
 .card-text{
   text-align: left;
   padding: 1px;
   margin: 1px;
 }
+
+input{
+  margin-bottom: 2rem;
+}
+
 

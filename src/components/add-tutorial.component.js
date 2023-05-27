@@ -67,7 +67,7 @@ export default class AddTutorial extends Component {
 
     render() {
         return (
-          <div className="submit-form">
+          <div className="submit-form" id="darky">
             {this.state.submitted ? (
               <div>
                 <h4>You submitted successfully!</h4>
