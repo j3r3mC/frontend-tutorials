@@ -1,9 +1,11 @@
 import React, { Component }  from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
+import image from '../asset/zoom.png'
 
 export default class TutorialsList extends Component {
     constructor(props) {
+        super(props);
         this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
         this.retrieveTutorials   = this.retrieveTutorials.bind(this);
         this.refreshList         = this.refreshList.bind(this);
@@ -24,7 +26,7 @@ export default class TutorialsList extends Component {
     }
 
     onChangeSearchTitle(e) {
-        const title = e.target.value;
+        const searchTitle = e.target.value;
 
         this.setState({
             searchTitle : searchTitle
@@ -103,7 +105,7 @@ export default class TutorialsList extends Component {
                                     type="button"
                                     onClick={this.searchTitle}
                                 >
-                                    Search <img src="public\téléchargement.png" alt="loupe" />
+                                    Search <img src={image} alt="loupe" width={"20px"} height={"20px"}/>
 
                                 </button>                                
                             </div>
@@ -158,6 +160,7 @@ export default class TutorialsList extends Component {
                             </div>
                             <Link to={"/tutorials/" 
                                 + currentTutorial.id}
+                                className="m-3 btn btn-sm btn-warning"
                                 >
                                     Edit
                                 </Link>
