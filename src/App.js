@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-//import AddTutorial from "./component/add-tutorial.component.js";
+import AddTutorial from "./components/add-tutorial.component";
 //import Tutorial from "./component/tutorial.component.js";
 //import TutorialsList from "./component/TutorialsList.js";
 
@@ -31,14 +31,12 @@ class App extends Component {
         </nav>
 
         <div className="container mt-3">
-          {/*
           <Routes>
-            <Route path="/" element={<TutorialsList />} />
-            <Route path="/tutorials" element={<TutorialsList />} />
+            {/*<Route path="/" element={<TutorialsList />} />
+            <Route path="/tutorials" element={<TutorialsList />} />*/}
             <Route path="/add" element={<AddTutorial />} />
-            <Route path="/tutorials/:id" element={<Tutorial />} />
+            {/*<Route path="/tutorials/:id" element={<Tutorial />} />*/}
           </Routes>
-        */}
         </div>
       </div>
     );
