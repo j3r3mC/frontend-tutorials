@@ -128,6 +128,7 @@ class Tutorial extends Component {
                       id="title"
                       value={currentTutorial.title}
                       onChange={this.onChangeTitle}
+                      required
                     />
                   </div>
                   <div className="form-group">
@@ -138,6 +139,7 @@ class Tutorial extends Component {
                       id="description"
                       value={currentTutorial.description}
                       onChange={this.onChangeDescription}
+                      required
                     />
                   </div>
     
