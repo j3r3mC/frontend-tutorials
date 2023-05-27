@@ -1,13 +1,10 @@
-@font-face {
-  font-family: "josephinSans-Medium";
-  src: url("./asset/fonts/JosefinSans-Medium.ttf");
-}
-
 body{
   color: white;
   background-image: url('./asset/background2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: "JosephinSans-Medium";
+  src: url("./asset/fonts/JosefinSans-Medium.ttf")
 }
 
 .titleList{
