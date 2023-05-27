@@ -31,5 +31,5 @@ class TutorialDataService  {
     }
 }
 
-const newPostDataServices = new TutorialDataService();
-export default newPostDataServices;
+const newTutorialDataServices = new TutorialDataService();
+export default newTutorialDataServices;
