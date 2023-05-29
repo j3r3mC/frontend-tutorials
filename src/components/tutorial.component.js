@@ -147,7 +147,7 @@ class Tutorial extends Component {
                     <label>
                       <strong>Status:</strong>
                     </label>
-                    {currentTutorial.published ? "Published" : "Pending"}
+                    {currentTutorial.published ? " Published" : " Pending"}
                   </div>
                 </form>
     

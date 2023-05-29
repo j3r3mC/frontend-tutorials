@@ -6,6 +6,7 @@ import "./App.css";
 import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
+import Register from "./components/register.component";
 
 
 class App extends Component {
@@ -27,6 +28,16 @@ class App extends Component {
                 Add
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/login"} className="nav-link">
+                Login 
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/register"} className="nav-link">
+                Register 
+              </Link>
+            </li>
           </div>
         </nav>
 
@@ -36,6 +47,7 @@ class App extends Component {
             <Route path="/tutorials" element={<TutorialsList />} />
             <Route path="/add" element={<AddTutorial />} />
             <Route path="/tutorials/:id" element={<Tutorial />} />
+            <Route path="/register" element={<Register/>}/>
           </Routes>
         </div>
       </div>

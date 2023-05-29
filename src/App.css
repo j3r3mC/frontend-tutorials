@@ -1,6 +1,6 @@
 body{
   color: white;
-  background-image: url('./asset/background2.jpg');
+  background-image: url('./asset/christ2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "JosephinSans-Medium";
@@ -8,8 +8,8 @@ body{
 }
 
 .titleList{
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
 }
 
@@ -62,8 +62,11 @@ input:valid {
   margin: 1px;
 }
 
+
 input{
   margin-bottom: 2rem;
+  
 }
+
 
 
