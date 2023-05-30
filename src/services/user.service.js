@@ -3,31 +3,31 @@ import http from "../http-common";
 class UserDataService  {
 
     getAll() {
-        return http.get("/users");
+        return http.get("/auth");
     }
 
     get(id) {
-        return http.get(`/users/${id}`);
+        return http.get(`/auth/${id}`);
     }
 
     create(data) {
-        return http.post("/users", data);
+        return http.post("/auth", data);
     }
 
     update(id, data) {
-        return http.put(`/users/${id}`, data);
+        return http.put(`/auth/${id}`, data);
     }
 
     delete(id) {
-        return http.delete(`/users/${id}`);
+        return http.delete(`/auth/${id}`);
     }
 
     deleteAll() {
-        return http.delete("/users");
+        return http.delete("/auth");
     }
 
     findByTitle(name) {
-        return http.get(`/users?name=${name}`);
+        return http.get(`/auth?name=${name}`);
     }
 }
 

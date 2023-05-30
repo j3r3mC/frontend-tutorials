@@ -34,7 +34,7 @@ class App extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
+              <Link to={"/auth/register"} className="nav-link">
                 Register 
               </Link>
             </li>
@@ -47,7 +47,7 @@ class App extends Component {
             <Route path="/tutorials" element={<TutorialsList />} />
             <Route path="/add" element={<AddTutorial />} />
             <Route path="/tutorials/:id" element={<Tutorial />} />
-            <Route path="/register" element={<Register/>}/>
+            <Route path="/auth/register" element={<Register/>}/>
           </Routes>
         </div>
       </div>

@@ -71,6 +71,16 @@ class Tutorial extends Component {
         description: this.state.currentTutorial.description,
         published: status
       };
+
+      if(!data.title || data.title.length > 50){
+        console.log("title imput should not empty or title length should be lower than 50 characters");
+        return;
+      }
+
+      if(!data.description || data.description.length > 250){
+        console.log("description imput should not empty or description length should be lower than 250 characters");
+        return;
+      }
   
       TutorialDataService.update(this.state.currentTutorial.id, data)
         .then(response => {
