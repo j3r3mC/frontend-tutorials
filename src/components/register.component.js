@@ -65,13 +65,13 @@ export default class Register extends Component {
         return;
       }
 
-      if(!data.email.includes("@",".fr") || !data.email.includes("@", ".com")){
+      if(!data.email.includes(".com") && !data.email.includes(".fr") || !data.email.includes("@")){
         console.log("email should be includes: @ && .com || @ && .fr");
         return;
       }
 
       if(!data.password || data.password.length <= 8){
-        console.log("password imput should not empty or password length should be lower than 50 characters");
+        console.log("password imput should not empty or password length should be lower than 8 characters");
         return;
       }
 
@@ -80,7 +80,7 @@ export default class Register extends Component {
         console.log("PasswordConfirm should not be empty, or password input and passwordConfirm should be the same!");
         return;
       }
-        
+
       UserDataService.create(data)
         .then(response => {
           this.setState({
@@ -136,6 +136,7 @@ export default class Register extends Component {
                     onChange={this.onChangeName}
                     name="name"
                   />
+                  <p className="messageErr"></p>
                 </div>
     
                 <div className="form-group">

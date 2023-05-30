@@ -36,8 +36,6 @@ export default class AddTutorial extends Component {
         title: this.state.title,
         description: this.state.description
       };
-        console.log(data.title.length);
-        console.log(data.description);
 
       if(!data.title || data.title.length > 50){
         console.log("title imput should not empty or title length should be lower than 50 characters");
