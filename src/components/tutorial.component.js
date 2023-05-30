@@ -17,7 +17,7 @@ class Tutorial extends Component {
           id: null,
           title: "",
           description: "",
-          published: false
+          published: false,
         },
         message: ""
       };

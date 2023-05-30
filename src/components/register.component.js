@@ -6,18 +6,26 @@ import { Link } from "react-router-dom";
 export default class Register extends Component {
     constructor(props) {
       super(props);
-      this.onChangeName = this.onChangeName.bind(this);
-      this.onChangeEmail = this.onChangeEmail.bind(this);
-      this.onChangePassword = this.onChangePassword.bind(this);
-      this.onChangePasswordConfirm = this.onChangePasswordConfirm.bind(this);
-      this.saveUser = this.saveUser.bind(this);
-      this.newUser = this.newUser.bind(this);
+      this.onChangeName                   = this.onChangeName.bind(this);
+      this.onChangeEmail                  = this.onChangeEmail.bind(this);
+      this.onChangePassword               = this.onChangePassword.bind(this);
+      this.onChangePasswordConfirm        = this.onChangePasswordConfirm.bind(this);
+      this.onChangeVisibleName            = this.onChangeVisibleName.bind(this);
+      this.onChangeVisibleEmail           = this.onChangeVisibleEmail.bind(this);
+      this.onChangeVisiblePassword        = this.onChangeVisiblePassword.bind(this);
+      this.onChangeVisiblePasswordConfirm = this.onChangeVisiblePasswordConfirm.bind(this);
+      this.saveUser                       = this.saveUser.bind(this);
+      this.newUser                        = this.newUser.bind(this);
       this.state = {
-        id: null,
-        name: "",
-        email: "", 
-        password: "",
-        passwordConfirm:"",
+        id                       : null,
+        name                     : "",
+        email                    : "", 
+        password                 : "",
+        passwordConfirm          : "",
+        isVisibleName            : false,
+        isVisibleEmail           : false,
+        isVisiblePassword        : false,
+        isVisiblePasswordConfirm : false,
   
         submitted: false
       };
@@ -46,49 +54,74 @@ export default class Register extends Component {
                 passwordConfirm: e.target.value
             });       
     }
+
+    onChangeVisibleName(e) {
+      this.setState({
+        isVisibleName : true
+      });
+    }
+    onChangeVisibleEmail(e) {
+      this.setState({
+        isVisibleEmail : true
+      });
+    }
+    onChangeVisiblePassword(e) {
+      this.setState({
+        isVisiblePassword : true
+      });
+    }
+    onChangeVisiblePasswordConfirm(e) {
+      this.setState({
+        isVisiblePasswordConfirm : true
+      });
+    }
   
     saveUser() {
       var data = {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-        passwordConfirm: this.state.passwordConfirm
+        name            : this.state.name,
+        email           : this.state.email,
+        password        : this.state.password,
+        passwordConfirm : this.state.passwordConfirm
       };
 
       if(!data.name || data.name.length > 50){
-        console.log("name imput should not empty or name length should be lower than 50 characters");
+        this.onChangeVisibleName();
+        
         return;
       }
 
       if(!data.email){
+        this.onChangeVisibleEmail();
         console.log("email should not be empty");
         return;
       }
 
       if(!data.email.includes(".com") && !data.email.includes(".fr") || !data.email.includes("@")){
+        this.onChangeVisiblePassword();
         console.log("email should be includes: @ && .com || @ && .fr");
         return;
       }
 
       if(!data.password || data.password.length <= 8){
-        console.log("password imput should not empty or password length should be lower than 8 characters");
+        this.onChangeVisiblePassword();
+        
         return;
       }
 
       if(!data.passwordConfirm || data.password != data.passwordConfirm){
-        console.log(data.password);
-        console.log("PasswordConfirm should not be empty, or password input and passwordConfirm should be the same!");
+        this.onChangeVisiblePasswordConfirm();
+
         return;
       }
 
       UserDataService.create(data)
         .then(response => {
           this.setState({
-            id: response.data.id,
-            name: response.data.name,
-            email: response.data.email,
-            password: response.data.password,
-            passwordConfirm: response.data.passwordConfirm,
+            id              : response.data.id,
+            name            : response.data.name,
+            email           : response.data.email,
+            password        : response.data.password,
+            passwordConfirm : response.data.passwordConfirm,
 
             submitted: true
           });
@@ -101,11 +134,11 @@ export default class Register extends Component {
   
     newUser() {
       this.setState({
-        id: null,
-        name: "",
-        email: "",
-        password: "",
-        passwordConfirm: "",
+        id              : null,
+        name            : "",
+        email           : "",
+        password        : "",
+        passwordConfirm : "",
   
         submitted: false
       });
@@ -124,7 +157,10 @@ export default class Register extends Component {
                                 </Link>
               </div>
             ) : (
-              <div>
+              <div className="titleForm">
+                <label htmlFor="titleForm">
+                  <h4 className="titlefor">Sign up</h4>
+                </label>
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
                   <input
@@ -136,7 +172,10 @@ export default class Register extends Component {
                     onChange={this.onChangeName}
                     name="name"
                   />
-                  <p className="messageErr"></p>
+                  <p className="red">{this.state.isVisibleName
+                    ? " name should not empty or name length should be lower than 50 characters" 
+                    : null}
+                  </p>
                 </div>
     
                 <div className="form-group">
@@ -150,6 +189,10 @@ export default class Register extends Component {
                     onChange={this.onChangeEmail}
                     name="email"
                   />
+                    <p className="red">{this.state.isVisibleEmail
+                      ? " email should not empty and should contain @ and finish by .com or .fr" 
+                      : null}
+                  </p>
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
@@ -162,6 +205,10 @@ export default class Register extends Component {
                     onChange={this.onChangePassword}
                     name="password"
                   />
+                  <p className="red">{this.state.isVisiblePassword
+                    ? "password  should not empty or password length should not be lower than 8 characters" 
+                    : null}
+                  </p>
                 </div>
                 <div className="form-group">
                   <label htmlFor="passwordConfirm">Confirm password</label>
@@ -173,6 +220,10 @@ export default class Register extends Component {
                     onChange={this.onChangePasswordConfirm}
                     name="passwordConfirm"
                   />
+                  <p className="red">{this.state.isVisiblePasswordConfirm
+                    ? "Password and confirm password should be the same !! " 
+                    : null}
+                  </p>
                 </div>
     
                 <button onClick={this.saveUser} className="btn btn-success">
