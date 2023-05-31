@@ -11,6 +11,8 @@ class Tutorial extends Component {
       this.updatePublished = this.updatePublished.bind(this);
       this.updateTutorial = this.updateTutorial.bind(this);
       this.deleteTutorial = this.deleteTutorial.bind(this);
+      this.onChangeVisibleTitle = this.onChangeVisibleTitle.bind(this);
+      this.onChangeVisibleDescription = this.onChangeVisibleDescription.bind(this);
   
       this.state = {
         currentTutorial: {
@@ -18,6 +20,8 @@ class Tutorial extends Component {
           title: "",
           description: "",
           published: false,
+          isVisibleTitle : false,
+          isVisibleDescription: false,
         },
         message: ""
       };
@@ -29,12 +33,17 @@ class Tutorial extends Component {
   
     onChangeTitle(e) {
       const title = e.target.value;
-  
+
+      this.setState({
+        isVisibleTitle: false
+      });
+
       this.setState(function(prevState) {
         return {
           currentTutorial: {
             ...prevState.currentTutorial,
             title: title
+          
           }
         };
       });
@@ -42,13 +51,32 @@ class Tutorial extends Component {
   
     onChangeDescription(e) {
       const description = e.target.value;
+
+      this.setState({
+        isVisibleDescription: false
+      });
       
       this.setState(prevState => ({
         currentTutorial: {
           ...prevState.currentTutorial,
-          description: description
+          description: description,
+          isVisibleDescription: false  
         }
       }));
+    }
+
+    onChangeVisibleTitle(data) {
+        this.setState({
+          isVisibleTitle: true
+        });
+        return;          
+    }
+    onChangeVisibleDescription(data) {
+        this.setState({
+          isVisibleDescription: true
+        });
+
+        return;
     }
   
     getTutorial(id) {
@@ -63,6 +91,7 @@ class Tutorial extends Component {
           console.log(e);
         });
     }
+    
   
     updatePublished(status) {
       var data = {
@@ -72,16 +101,12 @@ class Tutorial extends Component {
         published: status
       };
 
-      if(!data.title || data.title.length > 50){
-        console.log("title imput should not empty or title length should be lower than 50 characters");
+      if(!data.description || data.description.length > 250){
+        this.onChangeVisibleDescription();
+  
         return;
       }
 
-      if(!data.description || data.description.length > 250){
-        console.log("description imput should not empty or description length should be lower than 250 characters");
-        return;
-      }
-  
       TutorialDataService.update(this.state.currentTutorial.id, data)
         .then(response => {
           this.setState(prevState => ({
@@ -89,6 +114,7 @@ class Tutorial extends Component {
               ...prevState.currentTutorial,
               published: status
             }
+
           }));
           console.log(response.data);
         })
@@ -96,20 +122,29 @@ class Tutorial extends Component {
           console.log(e);
         });
     }
+    
   
     updateTutorial() {
       TutorialDataService.update(
         this.state.currentTutorial.id,
         this.state.currentTutorial
       )
-        .then(response => {
+        .then(response => {    
+          if(!this.state.currentTutorial.title || this.state.currentTutorial.title >= 50){
+            this.onChangeVisibleTitle();
+            return;
+          }
+          if(!this.state.currentTutorial.description ||this.state.currentTutorial.description >= 250) {
+            this.onChangeVisibleDescription();
+            return;
+          }      
           console.log(response.data);
-          this.props.router.navigation('/tutorials');
         })
         .catch(e => {
           console.log(e);
         });
     }
+    
   
     deleteTutorial() {    
       TutorialDataService.delete(this.state.currentTutorial.id)
@@ -140,6 +175,10 @@ class Tutorial extends Component {
                       onChange={this.onChangeTitle}
                       required
                     />
+                     <p className="red">{this.state.isVisibleTitle
+                      ? " Title should not empty or Title length should be lower than 50 characters" 
+                      : null}
+                  </p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="description">Description</label>
@@ -151,6 +190,10 @@ class Tutorial extends Component {
                       onChange={this.onChangeDescription}
                       required
                     />
+                    <p className="red">{this.state.isVisibleDescription
+                    ? "description imput should not empty or description length should be lower than 250 characters" 
+                    : null}
+                  </p> 
                   </div>
     
                   <div className="form-group">

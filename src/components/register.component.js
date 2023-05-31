@@ -33,24 +33,28 @@ export default class Register extends Component {
   
     onChangeName(e) {
       this.setState({
+        isVisibleName:false,
         name: e.target.value
       });
     }
   
     onChangeEmail(e) {
       this.setState({
+        isVisibleEmail:false,
         email: e.target.value
       });
     }
 
     onChangePassword(e) {
         this.setState({
+          isVisiblePassword:false,
             password: e.target.value
         });
     }
 
     onChangePasswordConfirm(e) {
             this.setState({
+                isVisiblePasswordConfirm:false,
                 passwordConfirm: e.target.value
             });       
     }
@@ -96,7 +100,7 @@ export default class Register extends Component {
         return;
       }
 
-      if(!data.email.includes(".com") && !data.email.includes(".fr") || !data.email.includes("@")){
+      if((!data.email.includes(".com") && !data.email.includes(".fr")) || !data.email.includes("@")){
         this.onChangeVisiblePassword();
         console.log("email should be includes: @ && .com || @ && .fr");
         return;
@@ -108,7 +112,7 @@ export default class Register extends Component {
         return;
       }
 
-      if(!data.passwordConfirm || data.password != data.passwordConfirm){
+      if(!data.passwordConfirm || data.password !== data.passwordConfirm){
         this.onChangeVisiblePasswordConfirm();
 
         return;

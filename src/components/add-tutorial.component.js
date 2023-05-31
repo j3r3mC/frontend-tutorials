@@ -8,12 +8,16 @@ export default class AddTutorial extends Component {
       this.onChangeDescription = this.onChangeDescription.bind(this);
       this.saveTutorial = this.saveTutorial.bind(this);
       this.newTutorial = this.newTutorial.bind(this);
+      this.onChangeVisibleTitle = this.onChangeVisibleTitle.bind(this);
+      this.onChangeVisibleDescription = this.onChangeVisibleDescription.bind(this);
   
       this.state = {
         id: null,
         title: "",
         description: "", 
         published: false,
+        isVisibleTitle : false,
+        isVisibleDescription: false,
   
         submitted: false
       };
@@ -21,13 +25,26 @@ export default class AddTutorial extends Component {
   
     onChangeTitle(e) {
       this.setState({
+        isVisibleTitle:false,
         title: e.target.value
       });
     }
   
     onChangeDescription(e) {
       this.setState({
+        isVisibleDescription:false,
         description: e.target.value
+      });
+    }
+
+    onChangeVisibleTitle(e) {
+      this.setState({
+        isVisibleTitle: true
+      });
+    }
+    onChangeVisibleDescription(e) {
+      this.setState({
+        isVisibleDescription: true
       });
     }
   
@@ -38,12 +55,14 @@ export default class AddTutorial extends Component {
       };
 
       if(!data.title || data.title.length > 50){
-        console.log("title imput should not empty or title length should be lower than 50 characters");
+        this.onChangeVisibleTitle();
+
         return;
       }
 
       if(!data.description || data.description.length > 250){
-        console.log("description imput should not empty or description length should be lower than 250 characters");
+        this.onChangeVisibleDescription();
+  
         return;
       }
   
@@ -97,8 +116,11 @@ export default class AddTutorial extends Component {
                     onChange={this.onChangeTitle}
                     name="title"
                   />
+                  <p className="red">{this.state.isVisibleTitle
+                      ? " Title should not empty or Title length should be lower than 50 characters" 
+                      : null}
+                  </p>
                 </div>
-    
                 <div className="form-group">
                   <label htmlFor="description">Description</label>
                   <input
@@ -110,6 +132,10 @@ export default class AddTutorial extends Component {
                     onChange={this.onChangeDescription}
                     name="description"
                   />
+                  <p className="red">{this.state.isVisibleDescription
+                    ? "description imput should not empty or description length should be lower than 250 characters" 
+                    : null}
+                  </p>                  
                 </div>
     
                 <button onClick={this.saveTutorial} className="btn btn-success">
