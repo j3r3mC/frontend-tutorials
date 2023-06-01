@@ -100,7 +100,7 @@ export default class TutorialsList extends Component {
                         />
                         <div className="input-group-append">
                             <button
-                                className="m-3 btn btn-sm btn-primary"
+                                className="btn btn-outline-light"
                                 type="button"
                                 onClick={this.searchTitle}
                             >
@@ -110,6 +110,7 @@ export default class TutorialsList extends Component {
                         </div>
                     </div>
                 </div>
+                
                 <div className="col-md-5">
                     <div className="card">
                         <div className="card-title">
@@ -132,7 +133,7 @@ export default class TutorialsList extends Component {
                                     ))}
                             </ul>
                             <button
-                                className="m-3 btn btn-sm btn-danger"
+                                className="destroy btn btn-outline-danger"
                                 onClick={this.removeAllTutorials}
                             >
                                 Remove all
@@ -142,9 +143,8 @@ export default class TutorialsList extends Component {
                 </div>
                 <div className="col-sm-6">
                     {currentTutorial ? (
-                        <div>
-                            <h4 className="titleList">Tutorial</h4>
-                            <div className="mb-6 card">
+                        <div className="content-all">
+                            <div className="card">
                                 <div className="card-body">
                                     <h3 className="card-title">
                                         {currentTutorial.title}
@@ -158,7 +158,7 @@ export default class TutorialsList extends Component {
                                     </div>
                                     <Link to={"/tutorials/"
                                         + currentTutorial.id}
-                                        className="m-3 btn btn-sm btn-warning"
+                                        className="btn btn-outline-warning"
                                     >
                                         Edit
                                     </Link>

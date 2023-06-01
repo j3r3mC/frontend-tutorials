@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { withRouter } from '../common/with-router';
+import ReactPlayer from 'react-player';
+import { redirect } from "react-router-dom";
 class Tutorial extends Component {
     constructor(props) {
       super(props);
@@ -139,6 +141,7 @@ class Tutorial extends Component {
             return;
           }      
           console.log(response.data);
+          this.props.router.navigation('/tutorials');
         })
         .catch(e => {
           console.log(e);
@@ -161,6 +164,9 @@ class Tutorial extends Component {
     
         return (
           <div>
+            <div className="player">
+                <ReactPlayer url='https://www.youtube.com/watch?v=f0X1Tl8aHtA' controls='true'  light="true" />
+            </div>
             {currentTutorial ? (
               <div className="edit-form">
                 <h4>Tutorial</h4>
