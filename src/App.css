@@ -1,10 +1,43 @@
 body{
   color: white;
-  background-image: url('./asset/dl5.jpg');
-  background-size: cover;
+  background-image: url('./asset/godslove.jpg');
+  background-size:cover;
   background-repeat: no-repeat;
   font-family: "JosephinSans-Medium";
   src: url("./asset/fonts/JosefinSans-Medium.ttf")
+}
+
+.nav-link::after{
+    content: '';
+    display: block;
+    bottom: 2px;
+    width: 0%;
+    left: 0px;
+    height: 2px;
+    transition: 0.25s cubic-bezier(0.72,-0.01, 0.19, 0.92);
+    background: white ;
+    color: white;
+    text-shadow: white 10px 0 30px;
+    
+      
+}
+.nav-link{
+  color: white;
+}
+
+.nav-item:hover{
+  text-shadow: white 20px 0 300px; 
+}
+
+
+.nav-item{
+  color: white;
+}
+
+
+.nav-link:hover:after {
+  box-shadow: white 20px 0 60px;
+  width: 100%;   
 }
 
 
@@ -24,37 +57,55 @@ input:valid {
 
 .list {
   text-align: left;
-  max-width: 750px;
+  max-width: 300px;
   margin: auto;
   
 }
 
 .submit-form {
   max-width: 300px;
-  margin: auto;
-  background-color: #1a2a3a;
-  opacity: 0.80;
+  background-color: #498280 ;
+  color: White;
+  opacity: 0.90;
+  border-radius: 30px;
+  box-shadow: white 10px 0 30px;
+  border: white solid 2px;
   padding: 2rem;
-  border-radius: 15px;
   
   
+  
+}
+#darky{
+  margin-top:auto;
+  padding: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .edit-form {
   max-width: 400px;
   margin: auto;
-  background-color: #1a2a3a;
-  opacity: 0.80;
+  background-color: #498280 ;
+  color: white;
+  opacity: 0.90;
   padding: 2rem;
   border-radius: 15px;
+  border-radius: 30px;
+  box-shadow: white 10px 0 30px;
+  border: white solid 2px;
 
 }
 .card{
   text-align: center;
   padding: auto;
-  background-color: #1a2a3a;
-  opacity: 0.80;
+  background-color: #498280 ;
+  opacity: 0.90;
   color: white;
+  border-radius: 30px;
+  box-shadow: white 10px 0 30px;
+  border: white solid 2px;
+  max-width: 450px ;
 }
 
 .card-text{
@@ -71,7 +122,6 @@ input{
 .red{
   color: red;
 }
-
 
 
 

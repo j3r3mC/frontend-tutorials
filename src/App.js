@@ -7,14 +7,15 @@ import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 import Register from "./components/register.component";
+import Login from "./components/login.component";
 
 
 class App extends Component {
   render() {
     return(
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/tutorials"} className="navbar-brand">
+        <nav className="navbar navbar-expand">
+          <Link to={"/tutorials"} className="navbar-brand sub nav-item">
             J3r3mC
           </Link>
           <div className="navbar-nav mr-auto">
@@ -29,7 +30,7 @@ class App extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
+              <Link to={"/auth/login"} className="nav-link">
                 Login 
               </Link>
             </li>
@@ -43,11 +44,12 @@ class App extends Component {
 
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<TutorialsList />} />
-            <Route path="/tutorials" element={<TutorialsList />} />
-            <Route path="/add" element={<AddTutorial />} />
-            <Route path="/tutorials/:id" element={<Tutorial />} />
-            <Route path="/auth/register" element={<Register/>}/>
+            <Route path = "/"              element = {<TutorialsList />} />
+            <Route path = "/tutorials"     element= {<TutorialsList />} />
+            <Route path = "/add"           element= {<AddTutorial />} />
+            <Route path = "/tutorials/:id" element = {<Tutorial />} />
+            <Route path = "/auth/register" element = {<Register/>}/>
+            <Route path = "/auth/login"    element  = {<Login/>} />
           </Routes>
         </div>
       </div>

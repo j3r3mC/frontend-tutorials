@@ -16,6 +16,7 @@ export default class Register extends Component {
       this.onChangeVisiblePasswordConfirm = this.onChangeVisiblePasswordConfirm.bind(this);
       this.saveUser                       = this.saveUser.bind(this);
       this.newUser                        = this.newUser.bind(this);
+      
       this.state = {
         id                       : null,
         name                     : "",

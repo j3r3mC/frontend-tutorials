@@ -1,4 +1,4 @@
-import React, { Component }  from "react";
+import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
 
@@ -6,17 +6,17 @@ export default class TutorialsList extends Component {
     constructor(props) {
         super(props);
         this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
-        this.retrieveTutorials   = this.retrieveTutorials.bind(this);
-        this.refreshList         = this.refreshList.bind(this);
-        this.setActiveTutorial   = this.setActiveTutorial.bind(this);
-        this.removeAllTutorials  = this.removeAllTutorials.bind(this);
-        this.searchTitle         = this.searchTitle.bind(this);
+        this.retrieveTutorials = this.retrieveTutorials.bind(this);
+        this.refreshList = this.refreshList.bind(this);
+        this.setActiveTutorial = this.setActiveTutorial.bind(this);
+        this.removeAllTutorials = this.removeAllTutorials.bind(this);
+        this.searchTitle = this.searchTitle.bind(this);
 
         this.state = {
-            tutorials       : [],
-            currentTutorial : null,
-            currentIndex    : -1,
-            searchTitle     : ""
+            tutorials: [],
+            currentTutorial: null,
+            currentIndex: -1,
+            searchTitle: ""
         };
     }
 
@@ -28,7 +28,7 @@ export default class TutorialsList extends Component {
         const searchTitle = e.target.value;
 
         this.setState({
-            searchTitle : searchTitle
+            searchTitle: searchTitle
         });
     }
 
@@ -36,7 +36,7 @@ export default class TutorialsList extends Component {
         TutorialDataService.getAll()
             .then(response => {
                 this.setState({
-                    tutorials : response.data
+                    tutorials: response.data
                 });
                 console.log("this is response.data : " + response.data);
             })
@@ -46,17 +46,17 @@ export default class TutorialsList extends Component {
     }
     refreshList() {
         this.retrieveTutorials();
-        
+
         this.setState({
-            currentTutorial : null,
-            currentIndex    : -1
+            currentTutorial: null,
+            currentIndex: -1
         });
     }
 
     setActiveTutorial(tutorial, index) {
         this.setState({
-            currentTutorial : tutorial,
-            currentIndex    : index
+            currentTutorial: tutorial,
+            currentIndex: index
         });
     }
 
@@ -75,7 +75,7 @@ export default class TutorialsList extends Component {
         TutorialDataService.findByTitle(this.state.searchTitle)
             .then(response => {
                 this.setState({
-                    tutorials : response.data
+                    tutorials: response.data
                 });
                 console.log("Be happy : " + response.data);
             })
@@ -85,78 +85,83 @@ export default class TutorialsList extends Component {
     }
 
     render() {
-        const {searchTitle, tutorials, currentTutorial, currentIndex} = this.state
+        const { searchTitle, tutorials, currentTutorial, currentIndex } = this.state
 
         return (
             <div className="list-row">
-                <div className="col-md-8">
-                    <div className="input-group mb3">
-                        <input 
+                <div className="col-md-5">
+                    <div className="input-group md-4">
+                        <input
                             type="text"
                             className="form-control"
                             placeholder="Search by title"
                             value={searchTitle}
-                            onChange={this.onChangeSearchTitle} 
-                            />
-                            <div className="input-group-append">
-                                <button
-                                    className="m-3 btn btn-sm btn-primary"
-                                    type="button"
-                                    onClick={this.searchTitle}
-                                >
-                                    Search 
+                            onChange={this.onChangeSearchTitle}
+                        />
+                        <div className="input-group-append">
+                            <button
+                                className="m-3 btn btn-sm btn-primary"
+                                type="button"
+                                onClick={this.searchTitle}
+                            >
+                                Search
 
-                                </button>                                
-                            </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div className="col-md-6">
-                    <h4 className="titleList">Tutorials list</h4>
-
-                    <ul className="list-group">
-                        {tutorials &&
-                        tutorials.map((tutorial,index) => (
-                            <li
-                            className={
-                                "list-group-item " + 
-                                (index === currentIndex ? "active" : "")
-                            }
-                            onClick={() => this.setActiveTutorial(tutorial, index)}
-                            key={index}
+                <div className="col-md-5">
+                    <div className="card">
+                        <div className="card-title">
+                            <h4 className="titleList">Tutorials list</h4>
+                        </div>
+                        <div className="card-content">
+                            <ul className="list-group">
+                                {tutorials &&
+                                    tutorials.map((tutorial, index) => (
+                                        <li
+                                            className={
+                                                "list-group-item " +
+                                                (index === currentIndex ? "active" : "")
+                                            }
+                                            onClick={() => this.setActiveTutorial(tutorial, index)}
+                                            key={index}
+                                        >
+                                            {tutorial.title}
+                                        </li>
+                                    ))}
+                            </ul>
+                            <button
+                                className="m-3 btn btn-sm btn-danger"
+                                onClick={this.removeAllTutorials}
                             >
-                                {tutorial.title}
-                            </li>
-                        ))}
-                    </ul>
-                    <button
-                        className="m-3 btn btn-sm btn-danger"
-                        onClick={this.removeAllTutorials}
-                    >
-                        Remove all
-                    </button>
+                                Remove all
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-sm-6">
                     {currentTutorial ? (
                         <div>
                             <h4 className="titleList">Tutorial</h4>
-                            <div className="card">
+                            <div className="mb-6 card">
                                 <div className="card-body">
                                     <h3 className="card-title">
-                                         {currentTutorial.title}
-                                    </h3>                            
-                            <div>
-                                <p className="card-text">description:</p>
-                                <p className="card-text">{currentTutorial.description} </p>
-                            </div>
-                            <div>
-                                <p className="card-text">status: {currentTutorial.published ? "Published" : "Pending"} </p>                                  
-                            </div>
-                            <Link to={"/tutorials/" 
-                                + currentTutorial.id}
-                                className="m-3 btn btn-sm btn-warning"
-                                >
-                                    Edit
-                                </Link>
+                                        {currentTutorial.title}
+                                    </h3>
+                                    <div>
+                                        <p className="card-text">description:</p>
+                                        <p className="card-text">{currentTutorial.description} </p>
+                                    </div>
+                                    <div>
+                                        <p className="card-text">status: {currentTutorial.published ? "Published" : "Pending"} </p>
+                                    </div>
+                                    <Link to={"/tutorials/"
+                                        + currentTutorial.id}
+                                        className="m-3 btn btn-sm btn-warning"
+                                    >
+                                        Edit
+                                    </Link>
                                 </div>
                             </div>
                         </div>
