@@ -5,9 +5,12 @@ body{
   background-repeat: no-repeat;
   font-family: "JosephinSans-Medium";
   src: url("./asset/fonts/JosefinSans-Medium.ttf");
-  
+ 
 }
 
+.container{
+  max-width: 45rem;
+}
 
 .nav-link::after{
     content: '';
@@ -20,14 +23,10 @@ body{
     background: white ;
     color: white;
     text-shadow: white 10px 0 30px;
-    
-      
+    display: flex;
+    flex-direction: row;          
 }
-.login-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 .nav-link{
   color: white;
 }
@@ -48,7 +47,6 @@ body{
 }
 
 
-
 input:invalid {
   border: 2px dashed red;
 }
@@ -57,7 +55,9 @@ input:valid {
   border: 2px solid greenyellow;
 }
 
-
+input{
+  text-align: center;
+}
 
 .submit-form {
   background-color: #498280 ;
@@ -66,51 +66,62 @@ input:valid {
   border-radius: 30px;
   box-shadow: white 10px 0 30px;
   border: white solid 2px;
-  padding: 2rem;
-  max-width: 300px;
-  align-items: center; 
+  padding: 1rem;
+  margin: 1rem;
 }
-.player{
-  float: right;
+
+.form-group{
+  margin: 1rem;
 }
+
+.video-stream{
+  border-radius: 20rem;
+}
+
 .edit-form {
-  max-width: 300px;
   text-align: center;
-  padding: auto;
-  margin-bottom: 10px;
   background-color: #498280 ;
   opacity: 0.90;
   color: white;
   border-radius: 30px;
   box-shadow: white 10px 0 30px;
   border: white solid 2px;
-  
-
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .card{
-  text-align: center;
-  padding: auto;
-  margin-bottom: 10px;
   background-color: #498280 ;
   opacity: 0.90;
   color: white;
   border-radius: 30px;
   box-shadow: white 10px 0 30px;
   border: white solid 2px;
-  max-width: 300px;
-  align-items: center;
-}
-
-input{
-  margin-bottom: 2rem;
-  max-width: 250px;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 .red{
   color: red;
 }
 
-.destroy{
-  margin: 2rem;
-  padding: auto;
+.search{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 2rem;
+  max-width: 40rem;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+}
+
+.btn{
+  margin: 1rem;
 }

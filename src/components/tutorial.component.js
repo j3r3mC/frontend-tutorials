@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { withRouter } from '../common/with-router';
 import ReactPlayer from 'react-player';
-import { redirect } from "react-router-dom";
 class Tutorial extends Component {
     constructor(props) {
       super(props);
@@ -164,12 +163,13 @@ class Tutorial extends Component {
     
         return (
           <div>
-            <div className="player">
-                <ReactPlayer url='https://www.youtube.com/watch?v=f0X1Tl8aHtA' controls='true'  light="true" />
-            </div>
+          
             {currentTutorial ? (
               <div className="edit-form">
                 <h4>Tutorial</h4>
+                <div className="player">
+                <ReactPlayer url='https://www.youtube.com/watch?v=f0X1Tl8aHtA' controls={true}  light={true} height={15 + "rem"} />
+            </div>
                 <form>
                   <div className="form-group">
                     <label htmlFor="title">Title</label>
@@ -209,17 +209,17 @@ class Tutorial extends Component {
                     {currentTutorial.published ? " Published" : " Pending"}
                   </div>
                 </form>
-    
+                <div className="buttons">
                 {currentTutorial.published ? (
                   <button
-                    className="m-3 btn btn-sm btn-warning"
+                    className=" btn btn-outline-warning"
                     onClick={() => this.updatePublished(false)}
                   >
                     UnPublish
                   </button>
                 ) : (
                   <button
-                    className="m-3 btn btn-sm btn-primary"
+                    className="btn btn-outline-primary"
                     onClick={() => this.updatePublished(true)}
                   >
                     Publish
@@ -227,19 +227,20 @@ class Tutorial extends Component {
                 )}
     
                 <button
-                  className="m-3 btn btn-sm btn-danger"
+                  className=" btn btn-outline-danger"
                   onClick={this.deleteTutorial}
                 >
                   Delete
                 </button>
     
                 <button
-                  type="submit"
-                  className="m-3 btn btn-sm btn-success"
+                  type="button"
+                  className=" btn btn-outline-dark"
                   onClick={this.updateTutorial}
                 >
                   Update
                 </button>
+                </div>
                 <p>{this.state.message}</p>
               </div>
             ) : (

@@ -88,9 +88,9 @@ export default class TutorialsList extends Component {
         const { searchTitle, tutorials, currentTutorial, currentIndex } = this.state
 
         return (
-            <div className="list-row">
-                <div className="col-md-5">
-                    <div className="input-group md-4">
+            <div>
+                <div className="content-search">
+                    <div className="search">
                         <input
                             type="text"
                             className="form-control"
@@ -98,7 +98,7 @@ export default class TutorialsList extends Component {
                             value={searchTitle}
                             onChange={this.onChangeSearchTitle}
                         />
-                        <div className="input-group-append">
+                        <div>
                             <button
                                 className="btn btn-outline-light"
                                 type="button"
@@ -111,7 +111,7 @@ export default class TutorialsList extends Component {
                     </div>
                 </div>
                 
-                <div className="col-md-5">
+                <div>
                     <div className="card">
                         <div className="card-title">
                             <h4 className="titleList">Tutorials list</h4>
@@ -141,7 +141,7 @@ export default class TutorialsList extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-6">
+                <div >
                     {currentTutorial ? (
                         <div className="content-all">
                             <div className="card">
@@ -168,7 +168,6 @@ export default class TutorialsList extends Component {
                     ) : (
                         <div>
                             <br />
-                            <p>Please click on tutorial ....</p>
                         </div>
                     )}
                 </div>
