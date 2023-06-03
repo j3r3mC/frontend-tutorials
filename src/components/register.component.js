@@ -14,6 +14,7 @@ export default class Register extends Component {
       this.onChangeVisibleEmail           = this.onChangeVisibleEmail.bind(this);
       this.onChangeVisiblePassword        = this.onChangeVisiblePassword.bind(this);
       this.onChangeVisiblePasswordConfirm = this.onChangeVisiblePasswordConfirm.bind(this);
+      this.onChangeIsNotAvailableMail     = this.onChangeIsNotAvailableMail.bind(this)
       this.saveUser                       = this.saveUser.bind(this);
       this.newUser                        = this.newUser.bind(this);
       
@@ -27,6 +28,7 @@ export default class Register extends Component {
         isVisibleEmail           : false,
         isVisiblePassword        : false,
         isVisiblePasswordConfirm : false,
+        isNotAvailableMail       : false,
   
         submitted: false
       };
@@ -79,6 +81,12 @@ export default class Register extends Component {
       this.setState({
         isVisiblePasswordConfirm : true
       });
+    }
+
+    onChangeIsNotAvailableMail(e) {
+      this.setState({
+        isNotAvailableMail : true
+      })
     }
   
     saveUser() {
@@ -133,7 +141,9 @@ export default class Register extends Component {
           console.log(response.data);
         })
         .catch(e => {
+          this.onChangeIsNotAvailableMail();
           console.log(e);
+          
         });
     }
   
@@ -197,6 +207,10 @@ export default class Register extends Component {
                     <p className="red">{this.state.isVisibleEmail
                       ? " email should not empty and should contain @ and finish by .com or .fr" 
                       : null}
+                  </p>
+                  <p className="red">{this.state.isNotAvailableMail
+                    ? "Email already exist in database, please login" 
+                    : null}
                   </p>
                 </div>
                 <div className="form-group">

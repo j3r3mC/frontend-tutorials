@@ -7,7 +7,6 @@ import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 import Register from "./components/register.component";
-import Login from "./components/login.component";
 
 
 class App extends Component {
@@ -49,7 +48,6 @@ class App extends Component {
             <Route path = "/add"           element= {<AddTutorial />} />
             <Route path = "/tutorials/:id" element = {<Tutorial />} />
             <Route path = "/auth/register" element = {<Register/>}/>
-            <Route path = "/auth/login"    element  = {<Login/>} />
           </Routes>
         </div>
       </div>

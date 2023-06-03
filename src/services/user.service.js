@@ -6,7 +6,11 @@ class UserDataService  {
         return http.get("/auth");
     }
 
-    get(id) {
+    getByEmail(email) {
+        return http.get(`/auth/register`);
+    }
+
+    getId(id) {
         return http.get(`/auth/${id}`);
     }
 
@@ -24,10 +28,6 @@ class UserDataService  {
 
     deleteAll() {
         return http.delete("/auth");
-    }
-
-    findByTitle(name) {
-        return http.get(`/auth?name=${name}`);
     }
 }
 
