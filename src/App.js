@@ -1,58 +1,57 @@
-import React, { Component } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-
+import React from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
+import Dashboard from "./components/dashboard/Dashboard";
+import Preferences from "./components/preference/Preferences";
+import Login from './components/login/Login';
+import useToken from './useToken';
 import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 import Register from "./components/register.component";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 
-class App extends Component {
-  render() {
-    return(
-      <div>
-        <nav className="navbar navbar-expand">
-          <Link to={"/tutorials"} className="navbar-brand sub nav-item">
-            J3r3mC
-          </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/tutorials"} className="nav-link">
-                Tutorials
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Add
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/auth/login"} className="nav-link">
-                Login 
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/auth/register"} className="nav-link">
-                Register 
-              </Link>
-            </li>
-          </div>
-        </nav>
+function App() {
+  const { token, setToken } = useToken();
 
-        <div className="container">
-          <Routes>
-            <Route path = "/"              element = {<TutorialsList />} />
-            <Route path = "/tutorials"     element= {<TutorialsList />} />
-            <Route path = "/add"           element= {<AddTutorial />} />
-            <Route path = "/tutorials/:id" element = {<Tutorial />} />
-            <Route path = "/auth/register" element = {<Register/>}/>
-          </Routes>
-        </div>
-      </div>
-    );
+  if(!token) {
+    return <Login setToken={setToken} />
   }
+  return (
+    <div className='container'>
+    <nav className="navbar navbar-expand">
+      <Link to={"/tutorials"} className="navbar-brand sub nav-item">
+        J3r3mC
+      </Link>
+      <div className="navbar-nav mr-auto">
+        <li className="nav-item">
+          <Link to={"/tutorials"} className="nav-link">
+            Tutorials
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/add"} className="nav-link">
+            Add
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/auth/register"} className="nav-link">
+            Register 
+          </Link>
+        </li>
+      </div>
+    </nav>
+    <Routes>
+      <Route path = "/tutorials"   element = {<TutorialsList />} />
+      <Route path = "/add"         element = {<AddTutorial />} />
+      <Route path = "/dashboard"   element = {<Dashboard />} />
+      <Route path = "/preferences" element = {<Preferences />} />
+      <Route path = "/tutorials/:id" element = {<Tutorial />} />
+      <Route path = "/auth/register" element = {<Register />} />
+    </Routes>
+    </div>
+  );
 }
 
 export default App;

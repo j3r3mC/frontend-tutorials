@@ -110,13 +110,13 @@ export default class TutorialsList extends Component {
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
-                    <div className="card">
-                        <div className="card-title">
+                    <div class="card">
+                        <div class="card-header">
                             <h4 className="titleList">Tutorials list</h4>
                         </div>
-                        <div className="card-content">
+                        <div class="card-body">
                             <ul className="list-group">
                                 {tutorials &&
                                     tutorials.map((tutorial, index) => (
@@ -133,12 +133,13 @@ export default class TutorialsList extends Component {
                                     ))}
                             </ul>
                             <button
-                                className="destroy btn btn-outline-danger"
-                                onClick={this.removeAllTutorials}
-                            >
-                                Remove all
-                            </button>
+                            className="destroy btn btn-outline-danger"
+                            onClick={this.removeAllTutorials}
+                        >
+                            Remove all
+                        </button>
                         </div>
+                        
                     </div>
                 </div>
                 <div >
