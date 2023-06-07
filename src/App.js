@@ -9,15 +9,15 @@ import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 import Register from "./components/register.component";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 
 
 function App() {
   const { token, setToken } = useToken();
 
   if(!token) {
-    return <Login setToken={setToken} />
+      return <Login setToken={setToken} />      
   }
+  
   return (
     <div className='container'>
     <nav className="navbar navbar-expand">
@@ -43,12 +43,14 @@ function App() {
       </div>
     </nav>
     <Routes>
-      <Route path = "/tutorials"   element = {<TutorialsList />} />
+      <Route path = "/"   element = {<TutorialsList />} />
+      <Route path = "/tutorials" className="tuto"   element = {<TutorialsList />} />
       <Route path = "/add"         element = {<AddTutorial />} />
       <Route path = "/dashboard"   element = {<Dashboard />} />
       <Route path = "/preferences" element = {<Preferences />} />
       <Route path = "/tutorials/:id" element = {<Tutorial />} />
       <Route path = "/auth/register" element = {<Register />} />
+      <Route path = "/login" className="logginStyle" element = {<Login />} />
     </Routes>
     </div>
   );

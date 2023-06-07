@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
-import "../../App.css"
-
+import Register from '../register.component';
+import { Link } from 'react-router-dom';
+import "../../Login.css";
 
 async function loginUser(credentials) {
+  
     return fetch('http://localhost:8080/login', {
       method: 'POST',
       headers: {
@@ -16,34 +17,45 @@ async function loginUser(credentials) {
    }
 
 export default function Login({setToken}) {
-    const [username, setUserName] = useState();
+  var isLog = false;
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
     const handleSubmit = async e => {
         e.preventDefault();
         const token = await loginUser({
-          username,
+          email,
           password
         });
+        isLog = true
+        document.body.className = (isLog === true ? "active" : "normal");
         setToken(token);
+
+        
       }
 
   return(
-    <div>
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className='containLog'>
+      
+      <form onSubmit={handleSubmit} className='formLog'>
+     
+      <h1 className='titleLog'>Sign in</h1>
         <label>
-            <p>Username</p>
-            <input type="text" onChange={e => setUserName(e.target.value)} />
+            <p>Email</p>
+            <input type="text" onChange={e => setEmail(e.target.value)} />
         </label>
         <label>
             <p>Password</p>
             <input type="password" onChange={e => setPassword(e.target.value)} />
         </label>
-
         <div>
             <button type="submit">Submit</button>
         </div>
+        <Link to={Register}>Sign up</Link>
+        <div className='wave'></div>
+        <div className='wave'></div>
+        <div className='wave'></div>
+        <div className='wave'></div>
+        <div className='wave'></div>
       </form>
     </div>
   )
@@ -51,3 +63,6 @@ export default function Login({setToken}) {
 Login.propTypes = {
     setToken: PropTypes.func.isRequired
   }
+
+  /*---------------------------------------------------------------------------------------------------------------------------*/
+  

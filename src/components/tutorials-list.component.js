@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
+require('../Tutorials.css');
 
 export default class TutorialsList extends Component {
     constructor(props) {
@@ -88,7 +89,7 @@ export default class TutorialsList extends Component {
         const { searchTitle, tutorials, currentTutorial, currentIndex } = this.state
 
         return (
-            <div>
+            <div className="contain">
                 <div className="content-search">
                     <div className="search">
                         <input
@@ -112,11 +113,11 @@ export default class TutorialsList extends Component {
                 </div>
 
                 <div>
-                    <div class="card">
-                        <div class="card-header">
+                    <div className="card">
+                        <div className="card-header">
                             <h4 className="titleList">Tutorials list</h4>
                         </div>
-                        <div class="card-body">
+                        <div className="card-body">
                             <ul className="list-group">
                                 {tutorials &&
                                     tutorials.map((tutorial, index) => (

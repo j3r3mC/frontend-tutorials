@@ -172,6 +172,7 @@ export default class Register extends Component {
                                 </Link>
               </div>
             ) : (
+              <div className="card">
               <div className="titleForm">
                 <label htmlFor="titleForm">
                   <h4 className="titlefor">Sign up</h4>
@@ -245,9 +246,10 @@ export default class Register extends Component {
                   </p>
                 </div>
     
-                <button onClick={this.saveUser} className="btn btn-success">
+                <button onClick={this.saveUser} className="btn btn-outline-success">
                   Registration
                 </button>
+              </div>
               </div>
             )}
           </div>
