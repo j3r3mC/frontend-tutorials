@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { withRouter } from '../common/with-router';
 import ReactPlayer from 'react-player';
-import "../Tutorials.css"
 class Tutorial extends Component {
 
   constructor(props) {
