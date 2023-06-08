@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 import { Link } from "react-router-dom";
+import "../Tutorials.css";
 
 export default class TutorialsList extends Component {
     constructor(props) {
