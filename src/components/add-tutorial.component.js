@@ -97,16 +97,17 @@ export default class AddTutorial extends Component {
   render() {
   
     return (
-      <div className="submit-form" id="darky">
+      <div className="submit-form">
         {this.state.submitted ? (
           <div>
-            <h4>You submitted successfully!</h4>
+            <h3>You submitted successfully!</h3>
             <button className="btn btn-outline-success" onClick={this.newTutorial}>
               Add
             </button>
           </div>
         ) : (
           <div className="card">
+            <h3>Create tutorial</h3>
             <div className="form-group">
               <label htmlFor="title">Title</label>
               <input

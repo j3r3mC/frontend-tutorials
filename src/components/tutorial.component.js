@@ -165,7 +165,7 @@ class Tutorial extends Component {
       <div>
 
         {currentTutorial ? (
-          <div className="edit-form">
+          <div className="edit-form card2">
             <h4>Tutorial</h4>
             <div className="player">
               <ReactPlayer url='https://www.youtube.com/watch?v=f0X1Tl8aHtA' controls={true} light={true} height={15 + "rem"} />
@@ -235,7 +235,7 @@ class Tutorial extends Component {
 
               <button
                 type="button"
-                className=" btn btn-outline-dark"
+                className=" btn btn-outline-light"
                 onClick={this.updateTutorial}
               >
                 Update

@@ -48,12 +48,10 @@ export default function Login({setToken}) {
             <input type="password" onChange={e => setPassword(e.target.value)} />
         </label>
         <div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-outline-light">Submit</button>
         </div>
-        <Link to={Register}>Sign up</Link>
-        <div className='wave'></div>
-        <div className='wave'></div>
-        <div className='wave'></div>
+        <Link className='a' to={Register}>Sign up</Link>
+      
         <div className='wave'></div>
         <div className='wave'></div>
       </form>

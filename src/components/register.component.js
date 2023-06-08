@@ -172,7 +172,7 @@ export default class Register extends Component {
                                 </Link>
               </div>
             ) : (
-              <div className="card">
+              <div className="card2">
               <div className="titleForm">
                 <label htmlFor="titleForm">
                   <h4 className="titlefor">Sign up</h4>

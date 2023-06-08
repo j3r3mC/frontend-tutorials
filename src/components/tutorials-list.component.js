@@ -90,30 +90,27 @@ export default class TutorialsList extends Component {
 
         return (
             <div className="contain">
-                <div className="content-search">
-                    <div className="search">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search by title"
-                            value={searchTitle}
-                            onChange={this.onChangeSearchTitle}
-                        />
-                        <div>
-                            <button
-                                className="btn btn-outline-light"
-                                type="button"
-                                onClick={this.searchTitle}
-                            >
-                                Search
-
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                 <div>
                     <div className="card">
+                        <div className="search">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Search by title"
+                                value={searchTitle}
+                                onChange={this.onChangeSearchTitle}
+                            />
+                            <div>
+                                <button
+                                    className="btn btn-outline-light"
+                                    type="button"
+                                    onClick={this.searchTitle}
+                                >
+                                    Search
+
+                                </button>
+                            </div>
+                        </div>
                         <div className="card-header">
                             <h4 className="titleList">Tutorials list</h4>
                         </div>
@@ -123,7 +120,7 @@ export default class TutorialsList extends Component {
                                     tutorials.map((tutorial, index) => (
                                         <li
                                             className={
-                                                "list-group-item " +
+                                                "list-group-item list-group-item-action list-group-item-dark " +
                                                 (index === currentIndex ? "active" : "")
                                             }
                                             onClick={() => this.setActiveTutorial(tutorial, index)}
@@ -133,14 +130,8 @@ export default class TutorialsList extends Component {
                                         </li>
                                     ))}
                             </ul>
-                            <button
-                            className="destroy btn btn-outline-danger"
-                            onClick={this.removeAllTutorials}
-                        >
-                            Remove all
-                        </button>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div >
